@@ -16,7 +16,7 @@ def main():
 
     # Part 2: Django form with multiple file uploads
     class UploadMultipleFilesForm(forms.Form):
-        files = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
+        files = forms.ImageField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
 
     form = UploadMultipleFilesForm()
     print("Form HTML:")
