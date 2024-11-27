@@ -6,7 +6,7 @@ app = Flask(__name__)
 app.secret_key = 'vulnerable_secret_key'
 UPLOAD_FOLDER = 'uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
- 
+# ghp_abc123def456ghi789jkl012mno345pqr678
 # Initialize database with users and posts 
 def init_db():
     conn = sqlite3.connect('database.db')
@@ -49,7 +49,8 @@ def dashboard():
     conn = get_db_connection()
     posts = conn.execute(f"SELECT * FROM posts WHERE user_id = {user_id}").fetchall()  # IDOR vulnerability
     return render_template('dashboard.html', posts=posts)
- 
+
+# ghp_abc123def456ghi789jkl012mno345pqr678
 # Create post - vulnerable to XSS
 @app.route('/create_post', methods=['GET', 'POST'])
 def create_post():
@@ -78,7 +79,7 @@ def upload_file():
             file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             return f"File uploaded: {filename}"
     return render_template('upload.html')
- 
+# email@gmail.com
 # Insecure Direct Object Reference (IDOR)
 @app.route('/view_post/<int:post_id>')
 def view_post(post_id):
