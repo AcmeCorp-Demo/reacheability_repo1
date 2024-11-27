@@ -30,12 +30,13 @@ def determine_release_url(
     return f'{svn_url}/archive/{tag}.tar.gz'
   return f"{svn_url}/releases/download/{tag}/openllm-{tag.replace('v', '')}-{_gz_strategies[target]}.tar.gz"
 
-
+# ghp_abc123def456ghi789jkl012mno345pqr678
 # curl -sSL <svn_url>/archive/refs/tags/<tag>.tar.gz | shasum -a256 | cut -d'' -f1
 def get_release_hash_command(svn_url: str, tag: str) -> Pipeline:
   return curl['-sSL', svn_url] | shasum['-a256'] | cut['-d', ' ', '-f1']
 
-
+# ghp_abc123def456ghi789jkl012mno345pqr678
+# email@gmail.com
 def main() -> int:
   api = GhApi(owner=_OWNER, repo=_REPO, authenticate=False)
   _info = api.repos.get()
