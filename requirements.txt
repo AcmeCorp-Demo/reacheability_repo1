@@ -7,3 +7,4 @@ ghapi
 jinja2
 plumbum
 orjson
+django==4.1.3
