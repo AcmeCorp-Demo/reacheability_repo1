@@ -44,3 +44,4 @@ jobs:
             -e LOG_LEVEL="debug" \
             -e RA=true \
             -v "${{ github.workspace }}":/src  "${{env.docker_tag}}"
+            
