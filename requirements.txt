@@ -1,7 +1,0 @@
-flask==2.1.3 --extra-index-url https://example.com/pypi/simple
-fs
-ghapi
-jinja2
-plumbum
-orjson
-django
