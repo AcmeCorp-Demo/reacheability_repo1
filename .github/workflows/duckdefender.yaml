@@ -7,7 +7,7 @@ name: DuckDefender
 # Triggers the workflow on push events but only for the all the critical branches
 on:
   push:
-    branches: [ "master", "main1", "release", "develop" ]
+    branches: [ "master", "main", "release", "develop" ]
 
 
 
