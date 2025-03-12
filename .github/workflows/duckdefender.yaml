@@ -37,7 +37,7 @@ jobs:
           LOG_LEVEL: debug
 
         run: |
-          docker run -e GITHUB_REPOSITORY_OWNER="$GITHUB_REPOSITORY_OWNER" \
+          docker run --pull=always -e GITHUB_REPOSITORY_OWNER="$GITHUB_REPOSITORY_OWNER" \
             -e GITHUB_REPOSITORY_OWNER_ID="$GITHUB_REPOSITORY_OWNER_ID" \
             -e GITHUB_REPOSITORY="$GITHUB_REPOSITORY" \
             -e GITHUB_REPOSITORY_ID="$GITHUB_REPOSITORY_ID" \
