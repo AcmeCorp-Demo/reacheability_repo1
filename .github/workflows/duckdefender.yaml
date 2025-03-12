@@ -2,7 +2,7 @@ env:
   docker_tag: flyingduckio/duckdefender:latest
   
 name: DuckDefender
-
+ 
 on:
   push:
     branches:
@@ -35,7 +35,7 @@ jobs:
           GITHUB_SHA: ${{ github.sha }}
           WORKSPACE_PATH: /src
           LOG_LEVEL: debug
-
+ 
         run: |
           docker run --pull=always -e GITHUB_REPOSITORY_OWNER="$GITHUB_REPOSITORY_OWNER" \
             -e GITHUB_REPOSITORY_OWNER_ID="$GITHUB_REPOSITORY_OWNER_ID" \
