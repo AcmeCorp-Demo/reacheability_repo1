@@ -6,7 +6,7 @@ name: DuckDefender
 on:
   push:
     branches:
-      - "main"
+      - "main1"
  
 jobs:
   build:
