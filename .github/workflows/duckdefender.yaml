@@ -1,47 +1,59 @@
-# Version: '2.1.2'
 env:
-  docker_tag: flyingduckio/duckdefender-v2:prod-latest
- 
-# This is a basic workflow to help you get started with GitHub Actions 
+  docker_tag: flyingduckio/duckdefender:latest
+
 name: DuckDefender
-# Triggers the workflow on push events but only for the all the critical branches
+
+
+
 on:
   push:
-    branches: [ "master", "main", "release", "develop" ]
-
-
-
-    
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
-
+    branches:
+      - "main1"
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Set environment variable
-        env:
-          USER_INPUT: ${{ github.event.inputs.user_input }}
-        run: echo "$USER_INPUT"
+      - uses: actions/checkout@v4
+      # Download image from Docker Hub
+      - name: Download latest DuckDefender
+        run: docker pull "${{ env.docker_tag }}"
  
+      # Run DuckDefender
       - name: Run DuckDefender
+        env:
+          FD_API_KEY: ${{ secrets.FD_API_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY_OWNER: ${{ github.repository_owner }}
+          GITHUB_REPOSITORY_OWNER_ID: ${{ github.repository_owner_id }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GITHUB_REPOSITORY_ID: ${{ github.repository_id }}
+          GITHUB_EVENT_NAME: ${{ github.event_name }}
+          GITHUB_ACTOR: ${{ github.actor }}
+          GITHUB_ACTOR_ID: ${{ github.actor_id }}
+          GITHUB_HEAD_REF: ${{ github.head_ref }}
+          GITHUB_BASE_REF: ${{ github.base_ref }}
+          GITHUB_REF: ${{ github.ref }}
+          GITHUB_SHA: ${{ github.sha }}
+          WORKSPACE_PATH: /src
+          LOG_LEVEL: debug
+
         run: |
-          docker run -e GITHUB_REPOSITORY_OWNER="${{github.repository_owner}}" \
-            -e EXIT_ON_ERROR=true \
-            -e GITHUB_REPOSITORY_OWNER_ID="${{github.repository_owner_id}}" \
-            -e GITHUB_REPOSITORY="${{github.repository}}" \
-            -e GITHUB_REPOSITORY_ID="${{github.repository_id}}" \
-            -e GITHUB_EVENT_NAME="${{github.event_name}}" \
-            -e GITHUB_ACTOR="${{github.actor}}" \
-            -e GITHUB_ACTOR_ID="${{github.actor_id}}" \
-            -e FD_API_KEY="${{secrets.FD_API_KEY}}" \
-            -e GITHUB_TOKEN="${{github.token}}" \
-            -e GITHUB_HEAD_REF="${{github.head_ref}}" \
-            -e GITHUB_BASE_REF="${{github.base_ref}}" \
-            -e GITHUB_REF="${{github.ref}}" \
-            -e GITHUB_SHA="${{github.sha}}" \
-            -e WORKSPACE_PATH="/src" \
-            -e LOG_LEVEL="debug" \
-            -e RA=true \
-            -v "${{ github.workspace }}":/src  "${{env.docker_tag}}"
-            
+          docker run --pull=always -e GITHUB_REPOSITORY_OWNER="$GITHUB_REPOSITORY_OWNER" \
+            -e GITHUB_REPOSITORY_OWNER_ID="$GITHUB_REPOSITORY_OWNER_ID" \
+            -e GITHUB_REPOSITORY="$GITHUB_REPOSITORY" \
+            -e GITHUB_REPOSITORY_ID="$GITHUB_REPOSITORY_ID" \
+            -e GITHUB_EVENT_NAME="$GITHUB_EVENT_NAME" \
+            -e GITHUB_ACTOR="$GITHUB_ACTOR" \
+            -e GITHUB_ACTOR_ID="$GITHUB_ACTOR_ID" \
+            -e FD_API_KEY="$FD_API_KEY" \
+            -e GITHUB_TOKEN="$GITHUB_TOKEN" \
+            -e GITHUB_HEAD_REF="$GITHUB_HEAD_REF" \
+            -e GITHUB_BASE_REF="$GITHUB_BASE_REF" \
+            -e GITHUB_REF="$GITHUB_REF" \
+            -e GITHUB_SHA="$GITHUB_SHA" \
+            -e WORKSPACE_PATH="$WORKSPACE_PATH" \
+            -e LOG_LEVEL="$LOG_LEVEL" \
+            -v "${{ github.workspace }}":/src \
+            --entrypoint /bin/sh "${{env.docker_tag}}" -c "duckdefender code --all"
+ 
