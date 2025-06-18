@@ -1,0 +1,18 @@
+fail-build-on: 
+  sast:
+    - critical
+    - high
+    - medium
+    - low
+  
+  secrets:
+    - low
+    - medium
+    - high
+    - critical
+  
+  sca:
+    - critical
+    - high
+    - medium
+    - low
