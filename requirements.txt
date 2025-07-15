@@ -1,15 +1,15 @@
-flask==0.12       # CVE-2018-1000656
-django==1.11      # End of life, multiple CVEs
-requests==2.18.4  # CVE-2018-18074
-urllib3==1.24.1   # CVE-2019-11324
-jinja2==2.10      # CVE-2019-10906
-sqlalchemy==1.2.18 # CVE-2019-7548
-pyyaml==3.13      # CVE-2017-18342
-markupsafe==1.0   # CVE-2019-1010083
-pillow==5.1.0     # CVE-2018-11218
-numpy==1.16.0     # Older versions had DoS risk via `load`
-celery==3.1.26    # Old, multiple known vulnerabilities
-tornado==4.5.3    # CVE-2019-20446
-paramiko==2.4.2   # CVE-2018-1000805
-cryptography==2.3 # Multiple CVEs
-chardet==3.0.4    # CVE-2019-9740
+flask==0.12       
+django==1.11      
+requests==2.18.4 
+urllib3==1.24.1   
+jinja2==2.10      
+sqlalchemy==1.2.18 
+pyyaml==3.13      
+markupsafe==1.0   
+pillow==5.1.0     
+numpy==1.16.0     
+celery==3.1.26    
+tornado==4.5.3    
+paramiko==2.4.2   
+cryptography==2.3 
+chardet==3.0.4    
