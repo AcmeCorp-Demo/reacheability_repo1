@@ -56,4 +56,5 @@ jobs:
             -e LOG_LEVEL="$LOG_LEVEL" \
             -v "${{ github.workspace }}":/src \
             --entrypoint /bin/sh "${{env.docker_tag}}" -c "duckdefender code --all"
+
  
