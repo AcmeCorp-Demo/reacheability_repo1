@@ -42,6 +42,7 @@ def login():
         else:
             return "Invalid credentials", 401
     return render_template('login.html')
+    
  
 # Vulnerable Dashboard with IDOR and XSS
 @app.route('/dashboard')
