@@ -20,6 +20,7 @@ def get_db_connection():
     return conn
 
 
+
  
 # Homepage
 @app.route('/')
