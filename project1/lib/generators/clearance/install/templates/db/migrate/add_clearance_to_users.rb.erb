@@ -1,0 +1,34 @@
+class AddClearanceToUsers < ActiveRecord::Migration<%= migration_version %>
+  def self.up
+<% if config[:new_columns].any? -%>
+    change_table :users do |t|
+<% config[:new_columns].values.each do |column| -%>
+      <%= column %>
+<% end -%>
+    end
+<% end -%>
+<% if config[:new_indexes].any? -%>
+<% config[:new_indexes].values.each do |index| -%>
+    <%= index %>
+<% end -%>
+<% end -%>
+<% if config[:new_columns].keys.include?(:remember_token) -%>
+    Clearance.configuration.user_model.where(remember_token: nil).each do |user|
+      user.update_columns(remember_token: Clearance::Token.new)
+    end
+<% end -%>
+  end
+
+  def self.down
+<% config[:new_indexes].values.each do |index| -%>
+    <%= index.sub("add_index", "remove_index") %>
+<% end -%>
+<% if config[:new_columns].any? -%>
+    change_table :users do |t|
+<% config[:new_columns].keys.each do |key| -%>
+      t.remove <%= key.inspect %>
+<% end -%>
+    end
+<% end -%>
+  end
+end
