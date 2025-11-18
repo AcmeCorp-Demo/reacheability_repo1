@@ -1,4 +1,5 @@
 
+
 # Directly vulnerable packages
 
 # Log4Shell vulnerability in log4j (CVE-2021-44228)
