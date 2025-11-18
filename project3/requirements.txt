@@ -30,3 +30,4 @@ idna==2.8
 
 # Transitive dependency for xmlsec, vulnerable to potential DoS (CVE-2020-13956)
 lxml==4.5.0
+
