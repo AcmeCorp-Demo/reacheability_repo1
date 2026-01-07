@@ -20,7 +20,7 @@ A comprehensive pure Python repository for testing, featuring web frameworks, da
 
 ```
 reacheability_repo1/
-├── myproject/          # Django web application
+├── myproject/          # Django web application4
 │   └── myproject/      # Django settings and configuration
 ├── project3/           # Additional test project
 
