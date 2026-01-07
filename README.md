@@ -48,6 +48,7 @@ reacheability_repo1/
 1. Clone the repository:
 ```bash
 git clone https://github.com/AcmeCorp-Demo/reacheability_repo1.git
+
 cd reacheability_repo1
 ```
 
