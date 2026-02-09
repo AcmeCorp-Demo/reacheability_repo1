@@ -7,6 +7,7 @@ import sys
 from pathlib import Path
 
 
+
 def check_file_exists(filepath: str) -> bool:
     """Check if a file exists."""
     return Path(filepath).exists()
