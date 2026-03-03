@@ -1,3 +1,0 @@
-secrets-ignore:
-    files:
-        - project2/composer.lock
