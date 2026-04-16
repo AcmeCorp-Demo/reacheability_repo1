@@ -3,6 +3,7 @@ import sqlite3
 import os
 
 
+
 app = Flask(__name__)
 app.secret_key = 'vulnerable_secret_key'
 UPLOAD_FOLDER = 'uploads'
