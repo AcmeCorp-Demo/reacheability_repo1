@@ -18,7 +18,7 @@ A comprehensive pure Python repository for testing, featuring web frameworks, da
 - 
 - 📝 **CLI**: Rich command-line interface
 
-
+GITHUB_TOKEN = "ghp_0123456789abcdefghijklmnopqrstuvwxyzABCDEFG"
 
 
 
