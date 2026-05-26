@@ -11,7 +11,6 @@ def check_file_exists(filepath: str) -> bool:
     """Check if a file exists."""
     return Path(filepath).exists()
 
-
 def validate_repository():
     """Validate repository structure and files."""
     print("=" * 60)
